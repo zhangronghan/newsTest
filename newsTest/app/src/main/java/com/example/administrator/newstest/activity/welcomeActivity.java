@@ -54,13 +54,20 @@ public class welcomeActivity extends AppCompatActivity {
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
             if(e1.getX()>e2.getX()){
+                mViewFlipper.setInAnimation(welcomeActivity.this,R.anim.push_left_in);
+                mViewFlipper.setOutAnimation(welcomeActivity.this,R.anim.push_left_out);
                 mViewFlipper.showNext();
-                
+
+                return true;
             }
             if(e1.getX()<e2.getX()){
+                mViewFlipper.setInAnimation(welcomeActivity.this,R.anim.push_right_in);
+                mViewFlipper.setOutAnimation(welcomeActivity.this,R.anim.push_right_out);
                 mViewFlipper.showPrevious();
+
+                return true;
             }
-            return super.onFling(e1, e2, velocityX, velocityY);
+            return true;
         }
     }
 

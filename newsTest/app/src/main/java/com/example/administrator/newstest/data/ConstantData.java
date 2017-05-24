@@ -6,6 +6,6 @@ package com.example.administrator.newstest.data;
 
 public class ConstantData {
 
-    public static final int THREAD_CODE=1001;
+    public static final String NEWSTYLE="NewStyle";
 
 }
