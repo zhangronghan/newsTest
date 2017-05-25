@@ -7,5 +7,7 @@ package com.example.administrator.newstest.data;
 public class ConstantData {
 
     public static final String NEWSTYLE="NewStyle";
+    public static final String INTENT_URL="url";
+
 
 }

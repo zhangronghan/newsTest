@@ -1,5 +1,6 @@
 package com.example.administrator.newstest.Fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.administrator.newstest.Listener.OnItemClickListener;
 import com.example.administrator.newstest.R;
 import com.example.administrator.newstest.adapter.NewsAdapter;
 import com.example.administrator.newstest.data.ConstantData;
@@ -107,7 +109,6 @@ public class NewsFragment extends Fragment {
                     public void onResponse(Call call, Response response) throws IOException {
                         Gson gson=new Gson();
                         String result=response.body().string();
-                        Log.e("AAA",result.toString());
                         NewsData newsData=gson.fromJson(result,NewsData.class);
                         mNewsList=newsData.getResult().getData();
 
@@ -121,7 +122,7 @@ public class NewsFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.e("BBB","onCreateView");
+        Log.e("onCreateView","onCreateView");
         View view=inflater.inflate(R.layout.fragment_news,container,false);
 
         mRecyclerView= (RecyclerView) view.findViewById(R.id.recyclerView);
@@ -130,6 +131,17 @@ public class NewsFragment extends Fragment {
 
         LinearLayoutManager manager=new LinearLayoutManager(view.getContext());
         mRecyclerView.setLayoutManager(manager);
+
+        mNewsAdapter.setOnItemClickListener(new OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Intent intent=new Intent(view.getContext(),ContentActivity.class);
+                String url=mNewsList.get(position).getUrl();
+                intent.putExtra(ConstantData.INTENT_URL,url);
+                startActivity(intent);
+
+            }
+        });
 
         return view;
     }
