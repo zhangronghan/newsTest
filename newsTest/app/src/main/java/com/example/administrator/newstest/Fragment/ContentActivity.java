@@ -3,6 +3,9 @@ package com.example.administrator.newstest.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.view.KeyEvent;
+import android.view.View;
+import android.widget.ImageView;
 
 import com.example.administrator.newstest.R;
 import com.example.administrator.newstest.data.ConstantData;
@@ -14,6 +17,7 @@ import com.tencent.smtt.sdk.WebViewClient;
  */
 public class ContentActivity extends AppCompatActivity{
     private WebView mWebView;
+    private ImageView ivBack;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -21,6 +25,7 @@ public class ContentActivity extends AppCompatActivity{
         setContentView(R.layout.activity_content);
 
         mWebView= (WebView) findViewById(R.id.webview);
+        ivBack= (ImageView) findViewById(R.id.iv_back);
         init();
 
     }
@@ -29,7 +34,7 @@ public class ContentActivity extends AppCompatActivity{
         String url=getIntent().getStringExtra(ConstantData.INTENT_URL);
         mWebView.getSettings().setJavaScriptEnabled(true);
 
-/*        mWebView.loadUrl(url);*/
+        mWebView.loadUrl(url);
 
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
@@ -39,8 +44,27 @@ public class ContentActivity extends AppCompatActivity{
             }
         });
 
+        ivBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mWebView.canGoBack()){
+                    mWebView.goBack();
+                } else{
+                    finish();
+                }
+
+            }
+        });
+
     }
 
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if(keyCode==KeyEvent.KEYCODE_BACK && mWebView.canGoBack()){
+            mWebView.goBack();
+            return true;
+        }
 
-
+        return super.onKeyDown(keyCode, event);
+    }
 }
