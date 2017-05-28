@@ -9,7 +9,7 @@
     </style>
 
     <style name="notitlebar" parent="Theme.AppCompat.DayNight.NoActionBar">
-
     </style>
+
 
 </resources>
