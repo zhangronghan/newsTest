@@ -36,4 +36,9 @@ dependencies {
     compile 'com.roughike:bottom-bar:2.3.1'
     compile 'me.relex:circleindicator:1.2.2@aar'
 
+
+
+
+
+
 }

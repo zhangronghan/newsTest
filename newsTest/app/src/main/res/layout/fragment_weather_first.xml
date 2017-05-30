@@ -58,7 +58,7 @@
                 android:typeface="monospace"/>
 
             <TextView
-                android:id="@+id/tv_weather"
+                android:id="@+id/tv_weather_state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -148,12 +148,12 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/aqi"
+                    android:id="@+id/tv_aqi"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="63"
                     android:textColor="@color/colorWhite"
-                    android:textSize="50sp"
+                    android:textSize="45sp"
                     android:typeface="monospace"/>
 
                 <TextView
@@ -177,7 +177,7 @@
                     android:layout_height="wrap_content"
                     android:text="28"
                     android:textColor="@color/colorWhite"
-                    android:textSize="50sp"
+                    android:textSize="45sp"
                     android:typeface="monospace"/>
 
                 <TextView
