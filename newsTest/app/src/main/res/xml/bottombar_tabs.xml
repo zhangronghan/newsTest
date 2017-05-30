@@ -1,27 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <tabs>
         <tab
             id="@+id/tab_news"
-            barColorWhenSelected="#5D4037"
+            icon="@drawable/ic_new"
             title="新闻"/>
 
         <tab
             id="@+id/tab_weather"
-            barColorWhenSelected="#5D4037"
+            icon="@drawable/ic_weather"
             title="天气" />
 
         <tab
             id="@+id/tab_joke"
-            barColorWhenSelected="#5D4037"
+            icon="@drawable/ic_joke"
             title="笑话" />
 
         <tab
             id="@+id/tab_state"
-            barColorWhenSelected="#5D4037"
+            icon="@drawable/ic_state"
             title="动态" />
 
     </tabs>
 
-</PreferenceScreen>

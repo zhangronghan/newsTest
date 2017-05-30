@@ -35,7 +35,7 @@ public class welcomeActivity extends AppCompatActivity {
         tvTouch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(welcomeActivity.this,MainActivity.class));
+                startActivity(new Intent(welcomeActivity.this,MainContentActivity.class));
             }
         });
 

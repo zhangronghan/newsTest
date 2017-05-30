@@ -41,7 +41,6 @@ public class RegisterActivity extends AppCompatActivity{
         edtPass= (EditText) findViewById(R.id.edt_password);
         btnReg= (Button) findViewById(R.id.btn_Reg);
         tvLog= (TextView) findViewById(R.id.tv_login);
-
     }
 
     private void init() {
@@ -62,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity{
                     public void done(MyUser myUser, BmobException e) {
                         if(myUser!=null){
                             Toast.makeText(RegisterActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                            startActivity(new Intent(RegisterActivity.this,MainContentActivity.class));
                         }
                     }
                 });

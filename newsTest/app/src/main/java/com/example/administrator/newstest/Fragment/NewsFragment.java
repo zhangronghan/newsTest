@@ -72,9 +72,7 @@ public class NewsFragment extends Fragment {
 
     private void getNewsData() {
                 OkHttpClient client=new OkHttpClient();
-
                 Request request;
-
                 switch (newType){
                     case 1:
                         request=new Request.Builder().url(url1).build();
@@ -109,6 +107,7 @@ public class NewsFragment extends Fragment {
                     public void onResponse(Call call, Response response) throws IOException {
                         Gson gson=new Gson();
                         String result=response.body().string();
+                        Log.e("onResponse",result.toString());
                         NewsData newsData=gson.fromJson(result,NewsData.class);
                         mNewsList=newsData.getResult().getData();
 
@@ -127,7 +126,7 @@ public class NewsFragment extends Fragment {
 
         mRecyclerView= (RecyclerView) view.findViewById(R.id.recyclerView);
         mNewsAdapter=new NewsAdapter(mNewsList);
-        mRecyclerView.setAdapter(mNewsAdapter);
+        mRecyclerView.setAdapter (mNewsAdapter);
 
         LinearLayoutManager manager=new LinearLayoutManager(view.getContext());
         mRecyclerView.setLayoutManager(manager);
@@ -139,7 +138,6 @@ public class NewsFragment extends Fragment {
                 String url=mNewsList.get(position).getUrl();
                 intent.putExtra(ConstantData.INTENT_URL,url);
                 startActivity(intent);
-
             }
         });
 

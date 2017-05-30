@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/colorBlue">
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+
+        <TextView
+            android:id="@+id/tv_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="zhang"
+            android:textColor="@color/colorWhite"
+            android:textSize="20dp"/>
+
+
+        <ImageView
+            android:id="@+id/iv_popup"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="5dp"
+            android:src="@drawable/three_point"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tv_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25"
+                android:textColor="@color/colorWhite"
+                android:textSize="60sp"
+                android:typeface="monospace"/>
+
+            <TextView
+                android:id="@+id/tv_weather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="20dp"
+                android:text="天气状况"
+                android:textColor="@color/colorWhite"
+                android:textSize="30sp"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="更新时间:"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"/>
+
+            <TextView
+                android:id="@+id/update_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15:18"
+                android:textColor="@color/colorWhite"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorBlue2"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="天气预报"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/weather_recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+        </android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/colorBlue2"
+        android:orientation="vertical"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="空气质量"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/aqi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="63"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="50sp"
+                    android:typeface="monospace"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AQI指数"
+                    android:textColor="@color/colorWhite"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_pm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="28"
+                    android:textColor="@color/colorWhite"
+                    android:textSize="50sp"
+                    android:typeface="monospace"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="PM2.5指数"
+                    android:textColor="@color/colorWhite"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBlue2"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:textSize="16sp"
+            android:text="生活建议"/>
+
+        <TextView
+            android:id="@+id/clothes_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:layout_margin="10dp"
+            android:text="穿衣指数"/>
+
+        <TextView
+            android:id="@+id/xq_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorWhite"
+            android:text="心情指数"/>
+
+        <TextView
+            android:id="@+id/travel_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorWhite"
+            android:text="旅游"/>
+
+        <TextView
+            android:id="@+id/ls_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorWhite"
+            android:text="晾晒指数"/>
+
+        <TextView
+            android:id="@+id/cold_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:textColor="@color/colorWhite"
+            android:text="感冒"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+</ScrollView>
+
