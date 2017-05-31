@@ -8,6 +8,7 @@
 
         <tab
             id="@+id/tab_weather"
+            barColorWhenSelected="#78dbdbdc"
             icon="@drawable/ic_weather"
             title="天气" />
 

@@ -8,6 +8,7 @@ public class ConstantData {
 
     public static final String NEWSTYLE="NewStyle";
     public static final String INTENT_URL="url";
+    public static final String WEATHER_CITY = "CITY";
 
 
 }
