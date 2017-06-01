@@ -9,9 +9,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/notitlebar">
-        <meta-data
-            android:name="com.baidu.lbsapi.API_KEY"
-            android:value="aRq0h4421EnxGKzhnlweKGTYzotNSvHa" />
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="509ed36b985d086c35c7cb152b9eeba7">
+
+        </meta-data>
 
         <activity android:name=".activity.StartActivity">
             <intent-filter>
@@ -34,11 +34,12 @@
 
 
 
+        <service android:name="com.amap.api.location.APSService"></service>
+
     </application>
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <!--获取GSM（2g）、WCDMA（联通3g）等网络状态的信息  -->
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <!--获取wifi网络状态的信息 -->
@@ -50,15 +51,16 @@
     <!--允许读取手机状态 用于创建BmobInstallation-->
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
-    <!-- 这个权限用于进行网络定位-->
+    <!--用于进行网络定位-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
-    <!-- 这个权限用于访问GPS定位-->
+    <!--用于访问GPS定位-->
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
-    <!-- 获取运营商信息，用于支持提供运营商信息相关的接口-->
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
-    <!-- 这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
+    <!--这个权限用于获取wifi的获取权限，wifi信息会用来进行网络定位-->
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"></uses-permission>
-    <!-- SD卡读取权限，用户写入离线定位数据-->
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"></uses-permission>
+    <!--用于申请调用A-GPS模块-->
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"></uses-permission>
+    <!--用于申请获取蓝牙信息进行室内定位-->
+    <uses-permission android:name="android.permission.BLUETOOTH"></uses-permission>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"></uses-permission>
 
 </manifest>

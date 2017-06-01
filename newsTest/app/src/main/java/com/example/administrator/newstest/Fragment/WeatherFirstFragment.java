@@ -20,9 +20,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.baidu.location.BDLocation;
-import com.baidu.location.BDLocationListener;
-import com.baidu.location.LocationClient;
 import com.example.administrator.newstest.R;
 import com.example.administrator.newstest.adapter.MyWeatherForecastAdapter;
 import com.example.administrator.newstest.data.WeatherData;
@@ -66,22 +63,25 @@ public class WeatherFirstFragment extends Fragment {
     private List<WeatherData.HeWeather5Bean.DailyForecastBean> mForeList = new ArrayList<>();
     private Handler mHandler;
     private boolean isSuccessRequest = true;     //成功得到json数据
-    private LocationClient mLocationClient;
 
+
+/*    //声明AMapLocationClient类对象
+    private AMapLocationClient mLocationClient = null;
+    //声明定位回调监听器
+    private AMapLocationListener mLocationListener;
+    //声明AMapLocationClientOption对象
+    private AMapLocationClientOption mLocationOption = null;*/
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        Log.e("onCreateView","WeatherFirstFragment");
         View view = inflater.inflate(R.layout.fragment_weather_first, container, false);
-        mLocationClient = new LocationClient(view.getContext());
-        mLocationClient.registerLocationListener(new MyLocationListener());
         initViews(view);
         init();
 
-
         mAdapter = new MyWeatherForecastAdapter(mForeList);
         mRecyclerView.setAdapter(mAdapter);
-
         mRecyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
 
         return view;
@@ -92,9 +92,31 @@ public class WeatherFirstFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         getWeatherForecast();
+//        initLocation();
 
 
     }
+
+/*    private void initLocation() {
+        //初始化定位
+        mLocationClient=new AMapLocationClient(getContext());
+        mLocationListener=new AMapLocationListener() {
+            @Override
+            public void onLocationChanged(AMapLocation aMapLocation) {
+                Log.e("Location",aMapLocation.getCity().toString());
+            }
+        };
+
+        mLocationClient.setLocationListener(mLocationListener);
+        //初始化AMapLocationClientOption对象
+        mLocationOption=new AMapLocationClientOption();
+        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
+        mLocationOption.setOnceLocation(true);
+        mLocationOption.setOnceLocationLatest(false);
+        //给定位客户端对象设置定位参数
+        mLocationClient.setLocationOption(mLocationOption);
+
+    }*/
 
     private void getWeatherForecast() {
         OkHttpClient client = new OkHttpClient();
@@ -138,9 +160,6 @@ public class WeatherFirstFragment extends Fragment {
         return Url;
     }
 
-    private void requestLocation() {
-        mLocationClient.start();
-    }
 
     private void initPara() {
         tvAqi.setText(mBeanList.get(0).getAqi().getCity().getAqi());
@@ -192,8 +211,8 @@ public class WeatherFirstFragment extends Fragment {
             public boolean onMenuItemClick(MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.popup_Loc:
-                        requestLocation();
                         Toast.makeText(getContext(), "定位"+myCity, Toast.LENGTH_SHORT).show();
+                        /*mLocationClient.startLocation();*/
                         break;
 
                     case R.id.popup_Cho:
@@ -237,7 +256,7 @@ public class WeatherFirstFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-        mLocationClient.stop();
+//        mLocationClient.stopLocation();
     }
 
     private void initViews(View view) {
@@ -258,18 +277,5 @@ public class WeatherFirstFragment extends Fragment {
     }
 
 
-    class MyLocationListener implements BDLocationListener {
-
-        @Override
-        public void onReceiveLocation(BDLocation bdLocation) {
-            String my=bdLocation.getCity().toString();
-            Log.e("AAA", "位置" + my);
-        }
-
-        @Override
-        public void onConnectHotSpotMessage(String s, int i) {
-
-        }
-    }
 
 }

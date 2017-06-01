@@ -34,10 +34,7 @@ public class cWeatherFragment extends Fragment {
 
         initFragmentList();
 
-
     }
-
-
 
     private void initFragmentList() {
         WeatherFirstFragment firstFragment=new WeatherFirstFragment();
