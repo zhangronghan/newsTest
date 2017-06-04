@@ -1,4 +1,4 @@
-package com.example.administrator.newstest;
+package com.example.administrator.newstest.customView;
 
 import android.content.Context;
 import android.support.v4.view.ViewPager;

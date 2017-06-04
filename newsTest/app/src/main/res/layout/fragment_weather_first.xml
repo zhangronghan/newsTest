@@ -167,6 +167,29 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:background="@color/colorBlue2"
+        android:orientation="vertical"
+        android:layout_margin="10dp"
+        android:padding="10dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/colorWhite"
+            android:layout_marginBottom="10dp"
+            android:text="折线图"/>
+
+        <com.example.administrator.newstest.customView.MyTextView
+            android:id="@+id/myTextView"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:textColor="@color/colorWhite"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:background="@color/colorBlue2"
@@ -296,6 +319,9 @@
 
     </LinearLayout>
 
+
+
 </LinearLayout>
+
 </ScrollView>
 

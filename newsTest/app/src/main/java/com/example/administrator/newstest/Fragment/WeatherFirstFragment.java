@@ -22,6 +22,7 @@ import android.widget.Toast;
 
 import com.example.administrator.newstest.R;
 import com.example.administrator.newstest.adapter.MyWeatherForecastAdapter;
+import com.example.administrator.newstest.customView.MyTextView;
 import com.example.administrator.newstest.data.WeatherData;
 import com.google.gson.Gson;
 
@@ -63,19 +64,13 @@ public class WeatherFirstFragment extends Fragment {
     private List<WeatherData.HeWeather5Bean.DailyForecastBean> mForeList = new ArrayList<>();
     private Handler mHandler;
     private boolean isSuccessRequest = true;     //成功得到json数据
+    private MyTextView mMyTextView;
 
-
-/*    //声明AMapLocationClient类对象
-    private AMapLocationClient mLocationClient = null;
-    //声明定位回调监听器
-    private AMapLocationListener mLocationListener;
-    //声明AMapLocationClientOption对象
-    private AMapLocationClientOption mLocationOption = null;*/
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        Log.e("onCreateView","WeatherFirstFragment");
+        Log.e("AAA","onCreateView-WeatherFirstFragment");
         View view = inflater.inflate(R.layout.fragment_weather_first, container, false);
         initViews(view);
         init();
@@ -90,33 +85,13 @@ public class WeatherFirstFragment extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Log.e("AAA","onCreate");
         getWeatherForecast();
-//        initLocation();
 
 
     }
 
-/*    private void initLocation() {
-        //初始化定位
-        mLocationClient=new AMapLocationClient(getContext());
-        mLocationListener=new AMapLocationListener() {
-            @Override
-            public void onLocationChanged(AMapLocation aMapLocation) {
-                Log.e("Location",aMapLocation.getCity().toString());
-            }
-        };
 
-        mLocationClient.setLocationListener(mLocationListener);
-        //初始化AMapLocationClientOption对象
-        mLocationOption=new AMapLocationClientOption();
-        mLocationOption.setLocationMode(AMapLocationClientOption.AMapLocationMode.Battery_Saving);
-        mLocationOption.setOnceLocation(true);
-        mLocationOption.setOnceLocationLatest(false);
-        //给定位客户端对象设置定位参数
-        mLocationClient.setLocationOption(mLocationOption);
-
-    }*/
 
     private void getWeatherForecast() {
         OkHttpClient client = new OkHttpClient();
@@ -153,6 +128,7 @@ public class WeatherFirstFragment extends Fragment {
             }
         });
 
+
     }
 
     private String getUrl(String myCity) {
@@ -173,6 +149,8 @@ public class WeatherFirstFragment extends Fragment {
         tvLsDesc.setText("紫外线指数：" + mBeanList.get(0).getSuggestion().getUv().getTxt());
         tvColdDesc.setText("感冒：" + mBeanList.get(0).getSuggestion().getFlu().getTxt());
         tvCity.setText(mBeanList.get(0).getBasic().getCity());
+
+
 
     }
 
@@ -197,6 +175,8 @@ public class WeatherFirstFragment extends Fragment {
                     initPara();
                     mAdapter.getData(mBeanList.get(0).getDaily_forecast());
                     Log.e("aaa", mBeanList.get(0).getDaily_forecast().get(0).getTmp().getMax());
+                    mMyTextView.getDataList(mBeanList.get(0).getDaily_forecast());
+
                     return true;
                 }
                 return false;
@@ -212,7 +192,6 @@ public class WeatherFirstFragment extends Fragment {
                 switch (item.getItemId()) {
                     case R.id.popup_Loc:
                         Toast.makeText(getContext(), "定位"+myCity, Toast.LENGTH_SHORT).show();
-                        /*mLocationClient.startLocation();*/
                         break;
 
                     case R.id.popup_Cho:
@@ -256,7 +235,6 @@ public class WeatherFirstFragment extends Fragment {
     @Override
     public void onDestroy() {
         super.onDestroy();
-//        mLocationClient.stopLocation();
     }
 
     private void initViews(View view) {
@@ -273,6 +251,8 @@ public class WeatherFirstFragment extends Fragment {
         tvXqDesc = (TextView) view.findViewById(R.id.xq_desc);
         tvLsDesc = (TextView) view.findViewById(R.id.ls_desc);
         tvTravelDesc = (TextView) view.findViewById(R.id.travel_desc);
+        mMyTextView= (MyTextView) view.findViewById(R.id.myTextView);
+
 
     }
 

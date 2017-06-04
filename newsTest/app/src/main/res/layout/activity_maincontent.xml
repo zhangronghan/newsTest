@@ -15,7 +15,7 @@
 
 
 
-         <com.example.administrator.newstest.MyViewPager
+         <com.example.administrator.newstest.customView.MyViewPager
              android:id="@+id/vp_viewpager"
              android:layout_width="match_parent"
              android:layout_height="0dp"
